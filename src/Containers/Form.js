@@ -32,6 +32,7 @@ export class Form extends Component {
         <h2 className='title'>"Make a donation now, fam!" *snap* *snap* *snap* - Travis</h2>
         <form className='donation_form'>
           <input
+            className='ui input'
             type='text'
             placeholder='Name'
             name='name'
@@ -39,6 +40,7 @@ export class Form extends Component {
             onChange={e => this.handleChange(e)}
           />
           <input
+            className='ui input'
             type='number'
             placeholder='Amount'
             name='donation'
@@ -46,6 +48,7 @@ export class Form extends Component {
             onChange={e => this.handleChange(e)}
           />
           <input
+            className='ui input'
             type='button'
             value='Make Donation'
             onClick={this.handleDonationClick}

@@ -6,6 +6,11 @@
 }
 
 .title {
+  padding: 15px 0;
   margin: 15px;
   font-size: 1.5rem;
+}
+
+input {
+  margin: 5px;
 }
