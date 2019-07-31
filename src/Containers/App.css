@@ -44,7 +44,7 @@ table {
 	border-spacing: 0;
 }
 
-main {
+.display_container {
   display: flex;
   flex-direction: row;
 }

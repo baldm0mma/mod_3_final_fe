@@ -17,3 +17,8 @@ export const setDonationData = donations => ({
   type: 'SET_DONATION_DATA',
   donations
 });
+
+export const makeDonation = newDonation => ({
+  type: 'MAKE_DONATION',
+  newDonation
+});
