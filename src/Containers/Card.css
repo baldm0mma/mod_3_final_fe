@@ -1,6 +1,8 @@
 .animal_card {
-  width: 33%;
+  width: 29%;
   height: 40vh;
+  border: 2px solid blue;
+  margin: 15px;
 }
 
 .animal_image {

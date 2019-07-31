@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getAllAnimals, getDonations } from '../apiCalls';
 import { setAllAnimals, setErrorMessage, setDonationData } from '../Actions';
 import { Card } from './Card';
+import { Donation } from './Donation';
 import './App.css';
 
 export class App extends Component {
@@ -21,24 +22,32 @@ export class App extends Component {
     }
   };
 
-  populateCards = () => {
+  populateAnimals = () => {
     return this.props.animals.map(animal => {
       return <Card animal={animal} key={animal.id} id={animal.id} />;
     });
   };
 
+  populateDonations = () => {
+    return this.props.donations.map(donation => {
+      return <Donation donation={donation} key={donation.id} id={donation.id} />;
+    });
+  }
+
   render = () => {
     return (
       <main>
         <header></header>
-        <section className='animals-container'>{this.populateCards()}</section>
+        <aside className='donations_container'>{this.populateDonations()}</aside>
+        <section className='animals_container'>{this.populateAnimals()}</section>
       </main>
     );
   };
 }
 
-export const mapStateToProps = ({ animals }) => ({
-  animals
+export const mapStateToProps = ({ animals, donations }) => ({
+  animals,
+  donations
 });
 
 export const mapDispatchToProps = dispatch => ({
