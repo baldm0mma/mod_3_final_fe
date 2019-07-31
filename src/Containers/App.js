@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllAnimals, getDonations } from '../apiCalls';
-import { setAllAnimals, setErrorMessage, setDonationData, toggleLoading } from '../Actions';
+import { getAllAnimals, getDonations, postNewDonation } from '../apiCalls';
+import {
+  setAllAnimals,
+  setErrorMessage,
+  setDonationData,
+  toggleLoading,
+  makeDonation
+} from '../Actions';
 import { Card } from './Card';
 import { Donation } from './Donation';
-import Form from './Form';
+import { Form } from './Form';
 import './App.css';
 
 export class App extends Component {
@@ -28,19 +34,34 @@ export class App extends Component {
 
   populateDonations = () => {
     return this.props.donations.map(donation => {
-      return <Donation donation={donation} key={donation.id} id={donation.id} />;
+      return (
+        <Donation donation={donation} key={donation.id} id={donation.id} />
+      );
     });
-  }
+  };
+
+  handleSubmit = async newDonation => {
+    try {
+      await postNewDonation(newDonation);
+    } catch (error) {
+      this.props.onErroringOut(error.message);
+    }
+    this.props.onDonation(newDonation);
+  };
 
   render = () => {
     return (
       <main>
         <header>
-          <Form />
+          <Form handleSubmit={newDonation => this.handleSubmit(newDonation)} />
         </header>
         <div className='display_container'>
-          <aside className='donations_container'>{this.populateDonations()}</aside>
-          <section className='animals_container'>{this.populateAnimals()}</section>
+          <aside className='donations_container'>
+            {this.populateDonations()}
+          </aside>
+          <section className='animals_container'>
+            {this.populateAnimals()}
+          </section>
         </div>
       </main>
     );
@@ -56,7 +77,8 @@ export const mapDispatchToProps = dispatch => ({
   onFetchingAllAnimals: allAnimals => dispatch(setAllAnimals(allAnimals)),
   onErroringOut: errorMessage => dispatch(setErrorMessage(errorMessage)),
   onFetchingDonations: donations => dispatch(setDonationData(donations)),
-  onLoadFinish: bool => dispatch(toggleLoading(bool))
+  onLoadFinish: bool => dispatch(toggleLoading(bool)),
+  onDonation: newDonation => dispatch(makeDonation(newDonation))
 });
 
 export default connect(

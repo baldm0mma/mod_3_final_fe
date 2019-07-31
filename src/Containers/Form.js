@@ -1,33 +1,28 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { makeDonation, setErrorMessage } from '../Actions';
-import { postNewDonation } from '../apiCalls';
 
 export class Form extends Component {
   constructor() {
     super();
     this.state = {
-      id: '',
+      id: Date.now(),
       name: '',
       donation: ''
     };
   }
 
+  clearState = () => {
+    this.setState({ name: '', donation: '' });
+  };
+
   handleChange = e => {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value });
-  }
+  };
 
-  handleSubmit = async () => {
-    try {
-      const response = await postNewDonation(this.state);
-      const parsed = await response.json();
-      return parsed;
-    } catch (error) {
-      this.props.onErroringOut(error.message);
-    }
-    this.props.onDonation(this.state);
+  handleDonationClick = () => {
+    this.props.handleSubmit(this.state);
+    this.clearState();
   };
 
   render = () => {
@@ -38,25 +33,21 @@ export class Form extends Component {
           placeholder='Name'
           name='name'
           value={this.state.name}
+          onChange={e => this.handleChange(e)}
         />
-        <imput
-          type='text'
+        <input
+          type='number'
           placeholder='Amount'
           name='donation'
           value={this.state.donation}
+          onChange={e => this.handleChange(e)}
         />
-        <input type='button' value='Make Donation' />
+        <input
+          type='button'
+          value='Make Donation'
+          onClick={this.handleDonationClick}
+        />
       </form>
     );
   };
 }
-
-export const mapDispatchToProps = dispatch => ({
-  onDonation: newDonation => dispatch(makeDonation(newDonation)),
-  onErroringOut: errorMessage => dispatch(setErrorMessage(errorMessage))
-});
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(Form);
