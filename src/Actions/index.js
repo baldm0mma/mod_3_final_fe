@@ -11,4 +11,9 @@ export const setErrorMessage = message => ({
 export const toggleLoading = bool => ({
   type: 'TOGGLE_LOADING',
   bool
-})
+});
+
+export const setDonationData = donations => ({
+  type: 'SET_DONATION_DATA',
+  donations
+});
