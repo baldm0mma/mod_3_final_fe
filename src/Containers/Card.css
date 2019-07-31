@@ -1,10 +1,20 @@
 .animal_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 29%;
-  height: 40vh;
-  border: 2px solid blue;
+  height: 50vh;
+  border: 2px solid rgb(123, 43, 43);
   margin: 15px;
+  border-radius: 15px;
 }
 
 .animal_image {
   width: 80%;
+  margin: 10px;
+}
+
+.description {
+  margin: 0 10px;
 }

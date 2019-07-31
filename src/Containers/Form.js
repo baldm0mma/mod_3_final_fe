@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Form.css';
 
 export class Form extends Component {
   constructor() {
@@ -27,27 +28,30 @@ export class Form extends Component {
 
   render = () => {
     return (
-      <form>
-        <input
-          type='text'
-          placeholder='Name'
-          name='name'
-          value={this.state.name}
-          onChange={e => this.handleChange(e)}
-        />
-        <input
-          type='number'
-          placeholder='Amount'
-          name='donation'
-          value={this.state.donation}
-          onChange={e => this.handleChange(e)}
-        />
-        <input
-          type='button'
-          value='Make Donation'
-          onClick={this.handleDonationClick}
-        />
-      </form>
+      <>
+        <h2 className='title'>"Make a donation now, fam!" *snap* *snap* *snap* - Travis</h2>
+        <form className='donation_form'>
+          <input
+            type='text'
+            placeholder='Name'
+            name='name'
+            value={this.state.name}
+            onChange={e => this.handleChange(e)}
+          />
+          <input
+            type='number'
+            placeholder='Amount'
+            name='donation'
+            value={this.state.donation}
+            onChange={e => this.handleChange(e)}
+          />
+          <input
+            type='button'
+            value='Make Donation'
+            onClick={this.handleDonationClick}
+          />
+        </form>
+      </>
     );
   };
 }

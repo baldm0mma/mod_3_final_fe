@@ -52,7 +52,7 @@ export class App extends Component {
   render = () => {
     return (
       <main>
-        <header>
+        <header className='form_container'>
           <Form handleSubmit={newDonation => this.handleSubmit(newDonation)} />
         </header>
         <div className='display_container'>

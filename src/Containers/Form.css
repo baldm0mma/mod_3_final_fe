@@ -1,0 +1,11 @@
+.donation_form {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: 15px;
+}
+
+.title {
+  margin: 15px;
+  font-size: 1.5rem;
+}
