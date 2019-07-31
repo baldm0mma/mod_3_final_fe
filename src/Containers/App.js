@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllAnimals } from '../apiCalls';
 import { setAllAnimals, setErrorMessage } from '../Actions';
+import { Card } from './Card';
 
 export class App extends Component {
   componentDidMount = async () => {
@@ -13,8 +14,23 @@ export class App extends Component {
     }
   };
 
+  populateCards = () => {
+    return this.props.animals.map(animal => {
+      return <Card animal={animal} />;
+    });
+  };
+
   render = () => {
-    return <main>hello world</main>;
+    return (
+      <main>
+        <header>
+
+        </header>
+        <section>
+          {this.populateCards()}
+        </section>
+      </main>
+    )
   };
 }
 

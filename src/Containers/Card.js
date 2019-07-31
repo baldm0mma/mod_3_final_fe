@@ -1,18 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
-export const Card = () => {
-
+export const Card = ({ animal }) => {
   return (
     <article>
       <h2>Name: {animal.name}</h2>
-      <img src={animal.image} alt={`Photo of ${animal.name}`}></img>
+      <img src={animal.img} alt={`Photo of ${animal.name}`} />
       <h4>Species: {animal.species}</h4>
       <p>Description: {animal.description}</p>
     </article>
-  )
-}
+  );
+};
 
-export const mapStateToProps = state => {
-  
-}
+// export const mapStateToProps = ({ allAnimals }) => ({
+//   allAnimals
+// });
+
+// export default connect(mapStateToProps, null)(Card);
