@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getAllAnimals } from '../apiCalls';
 import { setAllAnimals, setErrorMessage } from '../Actions';
 import { Card } from './Card';
+import './App.css';
 
 export class App extends Component {
   componentDidMount = async () => {
@@ -26,7 +27,7 @@ export class App extends Component {
         <header>
 
         </header>
-        <section>
+        <section className='animals-container'>
           {this.populateCards()}
         </section>
       </main>
