@@ -1,0 +1,16 @@
+.donation_form {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: 15px;
+}
+
+.title {
+  padding: 15px 0;
+  margin: 15px;
+  font-size: 1.5rem;
+}
+
+input {
+  margin: 5px;
+}
